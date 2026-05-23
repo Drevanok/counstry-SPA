@@ -1,33 +1,10 @@
-<section class="flex flex-row gap-2 mt-2">
+<!-- <section class="flex flex-row gap-2 mt-2">
     <input type="text" class="input input-border mr-2 w-56" placeholder="search by capital" autofocus #txtSearch
         (keyup.enter)="onSearch(txtSearch.value)">
 
     <button class="btn btn-primary" (click)="onSearch(txtSearch.value)">Buscar</button>
-</section>
+</section> -->
 
-<section class="mt-5">
-    <table class="table table-md mt-2 w-full">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>icono</th>
-                <th>Bandera</th>
-                <th>Nombre</th>
-                <th>Capital</th>
-                <th>Poblacion</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <!-- <th>#</th>
-                <th>icono</th>
-                <th>Bandera</th>
-                <th>Nombre</th>
-                <th>Capital</th>
-                <th>Poblacion</th>
-                <th></th> -->
-            </tr>
-        </tbody>
-    </table>
-</section>
+<country-search-input (search)="onSearch($event)" placeholder="Buscar por capital"/>
+
+<country-list />
