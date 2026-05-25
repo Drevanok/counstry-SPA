@@ -3,7 +3,7 @@ import { CountryList } from "../../components/country-list/country-list";
 
 @Component({
   selector: 'app-by-region-page',
-  imports: [CountryList],
+  imports: [],
   templateUrl: './by-region-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

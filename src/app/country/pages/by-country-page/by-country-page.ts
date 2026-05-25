@@ -4,7 +4,7 @@ import { CountrySearchInput } from "../../components/search-input/search-input";
 
 @Component({
   selector: 'app-by-country-page',
-  imports: [CountryList, CountrySearchInput],
+  imports: [CountrySearchInput],
   templateUrl: './by-country-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

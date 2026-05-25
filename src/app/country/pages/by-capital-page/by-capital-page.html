@@ -5,6 +5,9 @@
     <button class="btn btn-primary" (click)="onSearch(txtSearch.value)">Buscar</button>
 </section> -->
 
-<country-search-input (search)="onSearch($event)" placeholder="Buscar por capital"/>
-
+<country-search-input (search)="onSearch($event)" placeholder="Buscar por capital" />
+@if (hasError()) {
+<h3>{{hasError()}}</h3>
+}@else {
 <country-list [countries]="countries()" />
+}
