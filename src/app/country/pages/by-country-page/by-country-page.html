@@ -1,5 +1,4 @@
 <country-search-input (search)="this.query.set($event)" placeholder="Buscar por pais" />
-
 @if (countryResource.error()) {
 <h3>{{countryResource.error()}}</h3>
 }@if(countryResource.hasValue()) {
