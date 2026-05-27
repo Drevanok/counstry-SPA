@@ -6,7 +6,7 @@ import { firstValueFrom, of } from 'rxjs';
 import { rxResource } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-by-capital-page',
+  selector: 'by-capital-page',
   templateUrl: './by-capital-page.html',
   imports: [CountrySearchInput, CountryList],
 })

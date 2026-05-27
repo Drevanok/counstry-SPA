@@ -6,7 +6,7 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { of } from 'rxjs';
 
 @Component({
-  selector: 'app-by-country-page',
+  selector: 'by-country-page',
   imports: [CountrySearchInput, CountryList],
   templateUrl: './by-country-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
