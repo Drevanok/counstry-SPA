@@ -30,9 +30,22 @@ export class CountryService {
 
     return this.http.get<RESTCountry[]>(`${API_URL}/name/${query}`).pipe(
       map((resp) => CountryMapper.mapRestCountryArrayToCountryArray(resp)),
-      delay(3000),
+      delay(2000),
       catchError(error => {
         return throwError(()=> new Error(`No se pudo obtener paises con el nombre ${query}`));
+      })
+
+    )
+  }
+
+    searchByAlphaCode(code: string){
+
+    return this.http.get<RESTCountry[]>(`${API_URL}/alpha/${code}`).pipe(
+      map((resp) => CountryMapper.mapRestCountryArrayToCountryArray(resp)),
+      map(countries => countries.at(0)),
+      delay(2000),
+      catchError(error => {
+        return throwError(()=> new Error(`No se pudo obtener paises con el codigo ${code}`));
       })
 
     )

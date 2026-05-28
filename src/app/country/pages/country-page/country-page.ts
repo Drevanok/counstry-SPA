@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { rxResource } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
+import { CountryService } from '../../services/country';
 
 @Component({
   selector: 'country-page',
@@ -8,11 +10,13 @@ import { ActivatedRoute } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountryPage {
-  private route = inject(ActivatedRoute)
+  countryCode = inject(ActivatedRoute).snapshot.params['code'];
+  countryService = inject(CountryService);
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      console.log(params['code'])
-    })
-  }
+  countryResource = rxResource({
+    params: () => ({code: this.countryCode}),
+    stream: ({params}) => {
+      return this.countryService.searchByAlphaCode(params.code)
+    }
+  });
 }
