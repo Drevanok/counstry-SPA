@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { RESTCountry } from '../interfaces/rest-countries.interface';
-import { map, Observable, catchError, throwError, delay } from 'rxjs';
+import { map, Observable, catchError, throwError, delay, of } from 'rxjs';
 import { Country } from '../interfaces/country.interface';
 import { CountryMapper } from '../mappers/country.maper';
 
@@ -30,7 +30,7 @@ export class CountryService {
 
     return this.http.get<RESTCountry[]>(`${API_URL}/name/${query}`).pipe(
       map((resp) => CountryMapper.mapRestCountryArrayToCountryArray(resp)),
-      delay(2000),
+      delay(1000),
       catchError(error => {
         return throwError(()=> new Error(`No se pudo obtener paises con el nombre ${query}`));
       })
@@ -43,11 +43,10 @@ export class CountryService {
     return this.http.get<RESTCountry[]>(`${API_URL}/alpha/${code}`).pipe(
       map((resp) => CountryMapper.mapRestCountryArrayToCountryArray(resp)),
       map(countries => countries.at(0)),
-      delay(2000),
+      delay(1000),
       catchError(error => {
         return throwError(()=> new Error(`No se pudo obtener paises con el codigo ${code}`));
       })
-
     )
   }
 }
