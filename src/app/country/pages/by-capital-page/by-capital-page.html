@@ -5,7 +5,7 @@
     <button class="btn btn-primary" (click)="onSearch(txtSearch.value)">Buscar</button>
 </section> -->
 
-<country-search-input (search)="query.set($event)" placeholder="Buscar por capital" />
+<country-search-input (search)="query.set($event)" placeholder="Buscar por capital" [initialValue]="query()"/>
 @if (countryResource.error()) {
 <h3>{{countryResource.error()}}</h3>
 }@if(countryResource.hasValue()) {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, effect, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, input, linkedSignal, output, signal } from '@angular/core';
 
 @Component({
   selector: 'country-search-input',
@@ -7,12 +7,12 @@ import { ChangeDetectionStrategy, Component, effect, input, output, signal } fro
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountrySearchInput {
-
-  search = output<string>()
   placeholder = input('Buscar')
-
-  inputValue = signal<string>('')
   debounceTime = input(300);
+  initialValue = input<string>();
+
+  search = output<string>();
+  inputValue = linkedSignal<string>(() => this.initialValue() ?? '')
 
   debounceEffect = effect((onCleanup) => {
     const value = this.inputValue();

@@ -1,7 +1,8 @@
 <div class="flex flex-wrap gap-3 mt-4">
     @for (region of regions; track region) {
     <button class="btn btn-outline" (click)="selectedRegion.set(region)"
-        [class.btn-primary]="selectedRegion() === region">
+        [class.btn-primary]="selectedRegion() === region"
+        >
         {{ region }}
     </button>
     }
